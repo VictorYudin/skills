@@ -7,7 +7,7 @@ Use this skill for ovui window shell, standalone viewport shell, simple ovui app
 For a complete local desktop viewer, read `ovui-local-viewer-recipe` first and use
 this as the focused shell/display skill. Use this for a small single-window
 viewer: header, RTX viewport, optional sidebar, and inline controls. Do not use
-`ovui.app.Application`; that starts the full OvGear editor with docking, menus,
+`ovui_widgets.app.Application`; that starts the full USD Viewer editor with docking, menus,
 property panels, transform gizmos, and status bars.
 
 For mouse button normalization, click-vs-drag handling, and dispatch to camera
@@ -155,8 +155,8 @@ the path-field loader usable.
 ## Image Display
 
 Use the app's local image bridge helper when a plain image widget is enough.
-For projects using the `ovwidgets` helper, import
-`ovwidgets.viewport.image_bridge.ImageBridge`; otherwise use
+For projects using the `ovui_widgets` helper, import
+`ovui_widgets.viewport.image_bridge.ImageBridge`; otherwise use
 `ui.ByteImageProvider` directly. The renderer may stay at fixed resolution while
 `ImageWithProvider` stretches with preserve-aspect letterboxing.
 

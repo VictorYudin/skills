@@ -48,7 +48,7 @@ skills.
 | `ovstage` | <https://github.com/NVIDIA-Omniverse/ovstage> | Runtime stage lifetime, population, queries, ordinals, DLPack, path dictionaries, write floors, and release notes. |
 | `ovphysx` | <https://github.com/NVIDIA-Omniverse/PhysX/tree/main/ovphysx> | Physics tensor APIs, stage attach behavior, worker examples, binding shapes, and release notes. |
 | `ovstorage` | <https://github.com/NVIDIA-Omniverse/ovstorage> | Upstream `AGENTS.md`, the `skills/` catalog, storage client setup, resolver and asset-management patterns, examples, and release notes. |
-| `ovui` | <https://github.com/NVIDIA-Omniverse/ovui> | Current Python/setup guidance, widget behavior, `ovwidgets`, `omni.ui`, headless overlay behavior, and native UI conventions. |
+| `ovui` | <https://github.com/NVIDIA-Omniverse/ovui> | Current Python/setup guidance, widget behavior, `ovui_widgets`, `omni.ui`, headless overlay behavior, and native UI conventions. USD Viewer install and launch: <https://github.com/NVIDIA-Omniverse/ovui/blob/main/skills/omniverse-ui-widgets-app/SKILL.md>. |
 | `ovstream` | <https://github.com/NVIDIA-Omniverse/ovstream> | Library-specific `skills/`, sample servers, WebRTC lifecycle, SHM/client behavior, native input, examples, and package release notes. |
 
 Use this table only as supplemental documentation when the selected references do
@@ -220,6 +220,17 @@ Use the wheel matching the selected Python version, OS, and architecture.
 Select that Python version by checking the current `ovui` supplemental repo docs
 and package metadata instead of hard-coding a version in generated setup notes.
 
+For the full editor (USD Viewer), install the application package and one
+data adapter into a Python 3.12 environment. For the OpenUSD provider of release
+0.3.0:
+
+```bash
+python3 -m pip install ovui-widgets-app "ovui-data-adapters-openusd[standalone]" ovrtx
+```
+
+The OVUI application skill gives the commands for the other data adapters and
+releases, and the launch commands: <https://github.com/NVIDIA-Omniverse/ovui/blob/main/skills/omniverse-ui-widgets-app/SKILL.md>.
+
 If an environment must route NVIDIA packages through NVIDIA's package index,
 use the mirror with PyPI as the fallback:
 
@@ -235,13 +246,15 @@ Rules:
   apps.
 - Install the latest available `ovui` version unless the project manifest already
   pins a compatible version.
-- Keep `ovui`, `ovui-data-adapters`, `ovwidgets`, and related local UI
-  companion packages on one compatible package set.
+- Keep `ovui`, the `ovui-data-adapters-*` packages, the `ovui-widgets-*`
+  packages, and related local UI companion packages on one release. For the
+  full editor (USD Viewer), use the install commands of the OVUI application
+  skill: <https://github.com/NVIDIA-Omniverse/ovui/blob/main/skills/omniverse-ui-widgets-app/SKILL.md>.
 - Keep direct wheel URLs, wheel filenames, and alternate install commands out of
   app-specific setup notes.
 - Runtime guidance may still document API usage such as `omni.ui`,
   `omni.ui_scene`, headless overlay contracts, `PYTHONPATH`, and display setup.
-- For ovui widget, `ovwidgets`, editor shell, or headless overlay behavior not
+- For ovui widget, `ovui_widgets`, editor shell, or headless overlay behavior not
   covered in this skill package, use the supplemental documentation pointer above.
 
 ### ovstage
